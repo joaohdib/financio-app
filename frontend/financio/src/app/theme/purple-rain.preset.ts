@@ -1,6 +1,6 @@
 // src/theme/purple-rain.preset.ts
 import { definePreset } from '@primeng/themes';
-import Aura             from '@primeng/themes/aura';
+import Aura from '@primeng/themes/aura';
 
 /**
  * Preset baseado no Aura, porém:
@@ -8,29 +8,29 @@ import Aura             from '@primeng/themes/aura';
  * – Foco e highlights também em tons de violet
  * – Superfícies levemente arroxeadas no dark‑mode
  */
-const PurpleRain = definePreset(Aura, {
-  /* 1️⃣  Cor primária completa */
+const RedStorm = definePreset(Aura, {
+  /* 1️⃣  Cor primária completa - agora roxa */
   semantic: {
     primary: {
-      50 : '{violet.50}',
-      100: '{violet.100}',
-      200: '{violet.200}',
-      300: '{violet.300}',
-      400: '{violet.400}',
-      500: '{violet.500}',   // cor principal
-      600: '{violet.600}',
-      700: '{violet.700}',
-      800: '{violet.800}',
-      900: '{violet.900}',
-      950: '{violet.950}'
+      50: '{purple.50}',
+      100: '{purple.100}',
+      200: '{purple.200}',
+      300: '{purple.300}',
+      400: '{purple.400}',
+      500: '{purple.500}',   // cor principal
+      600: '{purple.600}',
+      700: '{purple.700}',
+      800: '{purple.800}',
+      900: '{purple.900}',
+      950: '{purple.950}'
     },
 
     /* 2️⃣  Surfaces (opcional) */
     colorScheme: {
       light: {
         surface: {
-          0  : '#ffffff',
-          50 : '{gray.50}',
+          0: '#ffffff',
+          50: '{gray.50}',
           100: '{gray.100}',
           200: '{gray.200}',
           300: '{gray.300}',
@@ -46,49 +46,56 @@ const PurpleRain = definePreset(Aura, {
       dark: {
         /* um toque roxo nas superfícies escuras */
         surface: {
-          0  : '#0d0d0d',
-          50 : '{violet.950}',
-          100: '{violet.900}',
-          200: '{violet.800}',
-          300: '{violet.700}',
-          400: '{violet.600}',
-          500: '{violet.500}',
-          600: '{violet.400}',
-          700: '{violet.300}',
-          800: '{violet.200}',
-          900: '{violet.100}',
-          950: '{violet.50}'
+          0: '#0d0d0d',
+          50: '{purple.950}',
+          100: '{purple.900}',
+          200: '{purple.800}',
+          300: '{purple.700}',
+          400: '{purple.600}',
+          500: '{purple.500}',
+          600: '{purple.400}',
+          700: '{purple.300}',
+          800: '{purple.200}',
+          900: '{purple.100}',
+          950: '{purple.50}'
         }
       }
     },
 
-    /* 3️⃣  Focus ring global – roxo e mais espesso */
     focusRing: {
-      width : '3px',
-      style : 'solid',
-      color : '{primary.color}',
+      width: '3px',
+      style: 'solid',
+      color: '{primary.color}',
       offset: '1px'
     }
   },
 
-  /* 4️⃣  Extra: botão “accent” laranja‑contraste */
   components: {
-    button: {
-      extend: {
-        accent: {
-          color       : '{purple.500}',   // roxo de contraste
-          inverseColor: '#ffffff'
-        }
-      },
-      css: ({ dt }: { dt: (key: string) => string }) => `
-        .p-button-accent {
-          background: ${dt('button.accent.color')};
-          color:      ${dt('button.accent.inverse.color')};
-          transition: .2s;
-        }
-      `
-    }
+      button: {
+        extend: {
+          accent: {
+            color: '#FFFFFF',  // roxo vibrante (Ex: BlueViolet)
+            inverseColor: '#8A2BE2'   // texto da mesma cor
+          }
+        },
+        css: ({ dt }: { dt: (key: string) => string }) => `
+          .p-button-accent {
+            background: #ffffff;
+            color: ${dt('button.accent.inverse.color')};
+            border: 2px solid ${dt('button.accent.inverse.color')};
+            border-radius: 9999px;  /* pill shape */
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            transition: 0.2s ease-in-out;
+          }
+    
+          .p-button-accent:hover {
+            background: ${dt('button.accent.inverse.color')};
+            color: #ffffff;
+          }
+        `
+      }
   }
 });
 
-export default PurpleRain;
+export default RedStorm;
